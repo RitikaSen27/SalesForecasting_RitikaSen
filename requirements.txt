@@ -8,7 +8,6 @@ prophet
 xgboost
 scikit-learn
 streamlit
-tensorflow
 requests
 openpyxl
 cmdstanpy
