@@ -638,7 +638,11 @@ Answer in 3-5 sentences, be specific with numbers, give a concrete business reco
                         "messages": messages
                     }
                 )
-                answer = response.json()['content'][0]['text']
+                resp_json = response.json()
+                if 'content' in resp_json:
+                    answer = resp_json['content'][0]['text']
+                else:
+                     answer = f"API Error: {resp_json}"
                 st.write(answer)
                 st.session_state.chat_history.append({'role':'assistant','content':answer})
 
