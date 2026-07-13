@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -626,7 +627,10 @@ Answer in 3-5 sentences, be specific with numbers, give a concrete business reco
 
                 response = requests.post(
                     "https://api.anthropic.com/v1/messages",
-                    headers={"Content-Type": "application/json"},
+                    headers={"Content-Type": "application/json",
+                        "x-api-key": os.environ.get("ANTHROPIC_API_KEY", ""),
+                        "anthropic-version": "2023-06-01"
+                        },
                     json={
                         "model": "claude-sonnet-4-6",
                         "max_tokens": 1000,
